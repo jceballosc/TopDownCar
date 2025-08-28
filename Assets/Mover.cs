@@ -32,7 +32,10 @@ public class Mover : MonoBehaviour
             steer = -.5f;
         }
 
-        transform.Translate(0, moveSpeed * move, 0);
-        transform.Rotate(0, 0, steerSpeed * steer);
+        float moveAmount = moveSpeed * move * Time.deltaTime;
+        float steerAmount = steerSpeed * steer * Time.deltaTime;
+
+        transform.Translate(0, moveAmount, 0);
+        transform.Rotate(0, 0, steerAmount);
     }
 }
