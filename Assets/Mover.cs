@@ -1,20 +1,38 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField] float rotateSpeed;
-    [SerializeField] float accelerationSpeed;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        rotateSpeed = .8f;
-        accelerationSpeed = .05f;
-    }
+    [SerializeField] float moveSpeed;
+    [SerializeField] float steerSpeed;
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 0, rotateSpeed);
-        transform.Translate(0, accelerationSpeed, 0);
+
+        float move = 0f;
+        float steer = 0f;
+
+
+        if (Keyboard.current.wKey.isPressed)
+        {
+            move = .5f;
+        }
+
+        else if (Keyboard.current.sKey.isPressed)
+        {
+            move = -.5f;
+        }
+
+        if (Keyboard.current.aKey.isPressed)
+        {
+            steer = .5f;
+        }
+        else if (Keyboard.current.dKey.isPressed)
+        {
+            steer = -.5f;
+        }
+
+        transform.Translate(0, moveSpeed * move, 0);
+        transform.Rotate(0, 0, steerSpeed * steer);
     }
 }
