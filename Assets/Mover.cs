@@ -37,5 +37,7 @@ public class Mover : MonoBehaviour
 
         transform.Translate(0, moveAmount, 0);
         transform.Rotate(0, 0, steerAmount);
+
+
     }
 }
